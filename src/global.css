@@ -31,16 +31,29 @@ html {
 
 body {
   font-family: var(--font-family);
+  color: var(--main);
+  background-color: var(--white);
   min-height: 100vh;
   overflow-x: hidden;
 }
 
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
 ul,
 ol {
+  margin: 0;
+  padding: 0;
   list-style: none;
 }
 
 button {
+  border: none;
+  padding: 0;
   background-color: transparent;
   cursor: pointer;
 }
@@ -48,6 +61,7 @@ button {
 a {
   text-decoration: none;
   color: inherit;
+  line-height: 0;
 }
 
 img {

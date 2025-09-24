@@ -1,0 +1,32 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 26px 120px;
+  background-color: var(--badges);
+}
+
+.logo {
+  width: 104px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.navbar {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+
+.navLink {
+  font-weight: 500;
+  font-size: 16px;
+  transition: color 0.3s linear;
+}
+
+.navLink:hover {
+  color: var(--button);
+}
+
+.active {
+  color: var(--button-hover);
+}
