@@ -1,5 +1,11 @@
+import FilterCarForm from '../../components/FilterCarForm/FilterCarForm';
+
 const Catalog = () => {
-  return <div>Catalog</div>;
+  return (
+    <div>
+      <FilterCarForm />
+    </div>
+  );
 };
 
 export default Catalog;
