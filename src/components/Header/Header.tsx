@@ -23,6 +23,7 @@ const Header = () => {
             isActive ? `${css.navLink} ${css.active}` : css.navLink
           }
           to="/catalog"
+          end
         >
           Catalog
         </NavLink>

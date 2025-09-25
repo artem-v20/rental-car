@@ -1,0 +1,97 @@
+.card {
+  background-color: var(--white);
+  width: 276px;
+  height: 424px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.cardImg {
+  border-radius: 14px;
+  width: 276px;
+  height: 268px;
+  object-fit: cover;
+  background: linear-gradient(
+    180deg,
+    rgba(18, 20, 23, 0.5) 0%,
+    rgba(18, 20, 23, 0.5) 100%
+  );
+  margin-bottom: 16px;
+}
+
+.title {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+.model {
+  color: var(--button);
+}
+
+.wrapperTitlePrice {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.priceDescr {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+.carDescr {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 4px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.33;
+  color: var(--gray);
+}
+
+.cardButton {
+  border-radius: 12px;
+  padding: 12px 88px;
+  width: 276px;
+  height: 44px;
+  color: var(--white);
+  background-color: var(--button);
+  transition: background-color 0.3s linear;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+.cardButton:hover {
+  background-color: var(--button-hover);
+}
+
+.imgWrapper {
+  position: relative;
+}
+
+.heartButton {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  cursor: pointer;
+}
+
+.heartButton svg {
+  fill: transparent;
+  stroke: var(--white);
+  stroke-width: 2px;
+  transition: background-color 0.3s linear;
+}
+
+.heartButton.active svg {
+  stroke: none;
+  fill: var(--button);
+}

@@ -18,3 +18,18 @@ export interface Car {
 }
 
 export type CarBrandList = string[];
+
+export interface PaginatedCars {
+  cars: Car[];
+  totalCars: number;
+  page: number;
+  totalPages: number;
+  nextPage?: number;
+}
+
+export type Filters = {
+  brand?: string;
+  price?: string;
+  mileageFrom?: number;
+  mileageTo?: number;
+};

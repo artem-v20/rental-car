@@ -1,0 +1,33 @@
+.box {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 32px;
+  column-gap: 48px;
+}
+
+.box > * {
+  flex: 0 0 calc((100% - 3 * 48px) / 4);
+  box-sizing: border-box;
+}
+
+.loadMore {
+  display: block;
+  margin: 0 auto;
+  padding: 12px 38px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.25;
+  border: 1px solid var(--button);
+  border-radius: 12px;
+  transition: background-color 0.3s linear;
+  margin-top: 80px;
+}
+
+.loadMore:hover:not(:disabled) {
+  border: 1px solid var(--button-hover);
+}
+
+.loadMore:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
