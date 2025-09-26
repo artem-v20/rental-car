@@ -62,7 +62,7 @@ export const FilterCarForm = ({ onApply, brands, prices }: Props) => {
       </label>
 
       <label className={css.label}>
-        Сar mileage / km
+        Car mileage / km
         <div className={css.mileageInputs}>
           <input
             className={css.input}

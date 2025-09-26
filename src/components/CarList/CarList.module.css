@@ -28,6 +28,6 @@
 }
 
 .loadMore:disabled {
-  background-color: #aaa;
+  background-color: var(--gray);
   cursor: not-allowed;
 }

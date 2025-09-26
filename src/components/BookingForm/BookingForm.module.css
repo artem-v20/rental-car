@@ -1,0 +1,228 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 32px;
+  background-color: var(--white);
+  border-radius: 10px;
+  border: 1px solid var(--gray-light);
+}
+
+.titleWrap {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  color: var(--main);
+}
+
+.subtitle {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--gray);
+}
+
+.inputWrap {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 12px;
+  background-color: var(--inputs);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--main);
+  height: 48px;
+  width: 100%;
+}
+
+input::placeholder {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--gray);
+}
+
+.textarea {
+  padding: 12px 20px 56px;
+  border: none;
+  border-radius: 12px;
+  background-color: var(--inputs);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--main);
+  resize: none;
+}
+
+textarea::placeholder {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--gray);
+}
+
+.button {
+  padding: 12px 51px;
+  background-color: var(--button);
+  color: var(--white);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.25;
+  border: none;
+  border-radius: 12px;
+  transition: background-color 0.3s linear;
+  width: 156px;
+  height: 44px;
+  margin: 0 auto;
+}
+
+.button:hover {
+  background-color: var(--button-hover);
+}
+
+:global(.react-datepicker) {
+  border: 1px solid var(--button);
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: var(--white);
+  font-family: var(--second-family);
+}
+
+:global(.react-datepicker__header) {
+  background-color: var(--white);
+  border-bottom: none;
+  padding: 12px;
+}
+
+:global(.react-datepicker__current-month) {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.2;
+  text-align: center;
+  color: var(--main);
+}
+
+:global(.react-datepicker__navigation) {
+  top: 6px;
+}
+
+:global(.react-datepicker__navigation-icon::before) {
+  border-color: var(--button);
+  border-width: 3px 3px 0 0;
+  width: 12px;
+  height: 12px;
+}
+
+:global(
+    .react-datepicker__navigation:hover
+      .react-datepicker__navigation-icon::before
+  ) {
+  border-color: var(--button-hover);
+}
+
+:global(.react-datepicker__day-names) {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 4px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--button);
+}
+
+:global(.react-datepicker__day-name) {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1.2;
+  text-align: center;
+  color: var(--gray);
+}
+
+:global(.react-datepicker__month) {
+  padding: 6px;
+  margin: 6px;
+}
+
+:global(.react-datepicker__week) {
+  display: flex;
+  gap: 8px;
+}
+
+:global(.react-datepicker__day) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 32px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.2;
+  color: var(--main);
+  border-radius: 50%;
+  transition: background-color 0.15s ease, color 0.15s ease,
+    box-shadow 0.15s ease;
+  cursor: pointer;
+}
+
+:global(
+    .react-datepicker__month
+      .react-datepicker__week
+      .react-datepicker__day:hover
+  ) {
+  background-color: #eaf2ff;
+  border-radius: 50%;
+  color: var(--main);
+}
+
+:global(.react-datepicker__day--selected),
+:global(.react-datepicker__day--keyboard-selected) {
+  background: var(--button);
+  color: var(--white);
+}
+
+:global(.react-datepicker__day--today) {
+  box-shadow: inset 0 0 0 2px var(--button);
+}
+
+:global(.react-datepicker__day--outside-month) {
+  color: var(--gray);
+}
+
+:global(.react-datepicker__day--disabled) {
+  color: var(--gray);
+  pointer-events: none;
+  background: transparent;
+}
+
+:global(.react-datepicker-popper) {
+  z-index: 10;
+}
+
+:global(
+    .react-datepicker-popper[data-placement^='bottom']
+      .react-datepicker__triangle
+  ),
+:global(
+    .react-datepicker-popper[data-placement^='top'] .react-datepicker__triangle
+  ) {
+  stroke: var(--button);
+  fill: var(--white);
+}

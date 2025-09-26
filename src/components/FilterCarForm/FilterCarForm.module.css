@@ -55,6 +55,11 @@ input::placeholder {
   opacity: 1;
 }
 
+.mileageInputs .input::placeholder {
+  color: var(--main);
+  opacity: 1;
+}
+
 .mileageInputs input:first-child {
   border-right: 1px solid var(--gray-light);
   border-top-right-radius: 0;
