@@ -1,73 +1,41 @@
-# React + TypeScript + Vite
+📘 Project Overview
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Project Name: RentalCar
 
-Currently, two official plugins are available:
+Description: Сar rental web application built with React, TypeScript, and CSS
+Modules. The site features a dynamic catalog of available vehicles, allowing
+users to browse by category, view detailed specifications and images for each
+car, and select rental dates via an intuitive calendar interface. Each vehicle
+page includes key information such as pricing, features, and availability. The
+UI is designed with semantic HTML, reusable components, and localization support
+to ensure a seamless experience across languages and devices. Toast
+notifications provide real-time feedback, and the architecture is optimized for
+scalability and maintainability.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🚀 Key Features
 
-## React Compiler
+- 🔧 Modular component architecture with semantic markup
+- 🌍 Localization-ready with responsive layout and accessibility in mind
+- 🎨 Custom SVG icon system with flexible styling and alignment
+- 📅 Calendar UI with timezone-aware date handling
+- 📦 Integrated API layer with strict TypeScript types and reusable constants
+- ✅ Toast notifications for user feedback using react-hot-toast
+- 🧠 Global state management with Zustand and advanced React Query patterns
+- 🖼️ Optimized favicon and branding assets for a professional look
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+📦Installation
 
-## Expanding the ESLint configuration
+1. git clone https://github.com/your-username/car-rental-ui.git
+2. cd car-rental-ui
+3. npm install
+4. npm run dev
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+🛠️ Usage
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Start the development server with npm run dev
+- Customize environment variables and localization files as needed
+- Connect to your backend API using the consolidated API layer
+- Adjust styling via CSS Modules and override icon styles as required
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+👤 Author Developed by Artem Vernyhora, a methodical and resilient frontend
+engineer with a designer's eye and a passion for scalable architecture.
