@@ -47,13 +47,23 @@ export const FilterCarForm = ({ onApply, brands, prices }: Props) => {
     setOpenSelect(prev => (prev === name ? null : name));
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleMileageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    const parsedValue = value === '' ? undefined : Number(value);
+
+    // Витягуємо тільки цифри
+    const raw = value.replace(/[^\d]/g, '');
+    const parsed = raw === '' ? undefined : Number(raw);
+
     setFilters(prev => ({
       ...prev,
-      [name]: parsedValue,
+      [name]: parsed,
     }));
+  };
+
+  const formatMileage = (value: number | undefined, label: string) => {
+    return value !== undefined
+      ? `${label} ${value.toLocaleString('en-US')}`
+      : '';
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -124,18 +134,20 @@ export const FilterCarForm = ({ onApply, brands, prices }: Props) => {
         <div className={css.mileageInputs}>
           <input
             className={css.input}
-            type="number"
+            type="text"
             name="mileageFrom"
             placeholder="From"
-            onChange={handleChange}
+            value={formatMileage(filters.mileageFrom, 'From')}
+            onChange={handleMileageChange}
             autoComplete="off"
           />
           <input
             className={css.input}
-            type="number"
+            type="text"
             name="mileageTo"
             placeholder="To"
-            onChange={handleChange}
+            value={formatMileage(filters.mileageTo, 'To')}
+            onChange={handleMileageChange}
             autoComplete="off"
           />
         </div>
