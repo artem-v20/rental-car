@@ -3,6 +3,7 @@
   justify-content: space-between;
   padding: 26px 120px;
   background-color: var(--badges);
+  margin-bottom: 4px;
 }
 
 .logo {
