@@ -16,7 +16,7 @@
   color: var(--gray);
 }
 
-.select,
+.customSelect,
 .input {
   padding: 12px 16px;
   font-weight: 500;
@@ -32,6 +32,79 @@
   outline: none;
 }
 
+.selectIcon {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%) rotate(0deg);
+  transition: transform 0.3s ease;
+  pointer-events: none;
+  color: var(--main);
+  width: 16px;
+  height: 16px;
+}
+
+.selectIcon.open {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.customSelectWrapper {
+  position: relative;
+  width: 204px;
+}
+
+.customSelect {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.selectedValue {
+  flex-grow: 1;
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  width: 100%;
+  background-color: var(--inputs);
+  border-radius: 12px;
+  z-index: 10;
+  max-height: 240px;
+  overflow-y: auto;
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: var(--gray-light) transparent;
+}
+
+.dropdown::-webkit-scrollbar {
+  width: 6px;
+}
+
+.dropdown::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+.dropdown li {
+  padding: 12px 16px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--gray);
+}
+
+.dropdown li:first-child {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.dropdown li:last-child {
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
 .mileageInputs {
   display: flex;
   border-radius: 12px;
@@ -41,7 +114,6 @@
 .mileageInputs .input {
   flex: 1;
   border: none;
-  padding: 8px;
   font-weight: 500;
   font-size: 16px;
   line-height: 1.25;

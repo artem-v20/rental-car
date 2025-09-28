@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import css from './FilterCarForm.module.css';
 import type { Filters } from '../../types/car';
+import { BsChevronDown } from 'react-icons/bs';
 
 interface Props {
   onApply: (filters: Filters) => void;
@@ -11,19 +12,44 @@ interface Props {
 
 export const FilterCarForm = ({ onApply, brands, prices }: Props) => {
   const [filters, setFilters] = useState<Filters>({});
+  const [openSelect, setOpenSelect] = useState<string | null>(null);
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
+  const brandRef = useRef<HTMLDivElement>(null);
+  const priceRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        brandRef.current &&
+        !brandRef.current.contains(e.target as Node) &&
+        priceRef.current &&
+        !priceRef.current.contains(e.target as Node)
+      ) {
+        setOpenSelect(null);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  const handleSelect = (name: string, value: string | number) => {
+    setFilters(prev => ({
+      ...prev,
+      [name]: value === '' ? undefined : value,
+    }));
+    setOpenSelect(null);
+  };
+
+  const handleToggle = (name: string) => {
+    setOpenSelect(prev => (prev === name ? null : name));
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-
-    const parsedValue =
-      value === ''
-        ? undefined
-        : name.includes('mileage') || name === 'price'
-        ? Number(value)
-        : value;
-
+    const parsedValue = value === '' ? undefined : Number(value);
     setFilters(prev => ({
       ...prev,
       [name]: parsedValue,
@@ -39,26 +65,58 @@ export const FilterCarForm = ({ onApply, brands, prices }: Props) => {
     <form className={css.form} onSubmit={handleSubmit}>
       <label className={css.label}>
         Car brand
-        <select className={css.select} name="brand" onChange={handleChange}>
-          <option value="">Choose a brand</option>
-          {brands.map(b => (
-            <option key={b} value={b}>
-              {b}
-            </option>
-          ))}
-        </select>
+        <div className={css.customSelectWrapper} ref={brandRef}>
+          <div
+            className={css.customSelect}
+            onClick={() => handleToggle('brand')}
+          >
+            <span className={css.selectedValue}>
+              {filters.brand || 'Choose a brand'}
+            </span>
+            <BsChevronDown
+              className={`${css.selectIcon} ${
+                openSelect === 'brand' ? css.open : ''
+              }`}
+            />
+          </div>
+          {openSelect === 'brand' && (
+            <ul className={css.dropdown}>
+              {brands.map(b => (
+                <li key={b} onClick={() => handleSelect('brand', b)}>
+                  {b}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
       </label>
 
       <label className={css.label}>
         Price / 1 hour
-        <select className={css.select} name="price" onChange={handleChange}>
-          <option value="">Choose a price</option>
-          {prices.map(p => (
-            <option key={p} value={p}>
-              To ${p}
-            </option>
-          ))}
-        </select>
+        <div className={css.customSelectWrapper} ref={priceRef}>
+          <div
+            className={css.customSelect}
+            onClick={() => handleToggle('price')}
+          >
+            <span className={css.selectedValue}>
+              {filters.price ? `To $${filters.price}` : 'Choose a price'}
+            </span>
+            <BsChevronDown
+              className={`${css.selectIcon} ${
+                openSelect === 'price' ? css.open : ''
+              }`}
+            />
+          </div>
+          {openSelect === 'price' && (
+            <ul className={css.dropdown}>
+              {prices.map(p => (
+                <li key={p} onClick={() => handleSelect('price', p)}>
+                  {p}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
       </label>
 
       <label className={css.label}>
@@ -70,6 +128,7 @@ export const FilterCarForm = ({ onApply, brands, prices }: Props) => {
             name="mileageFrom"
             placeholder="From"
             onChange={handleChange}
+            autoComplete="off"
           />
           <input
             className={css.input}
@@ -77,6 +136,7 @@ export const FilterCarForm = ({ onApply, brands, prices }: Props) => {
             name="mileageTo"
             placeholder="To"
             onChange={handleChange}
+            autoComplete="off"
           />
         </div>
       </label>
