@@ -4,6 +4,7 @@ import { FilterCarForm } from '../../components/FilterCarForm/FilterCarForm';
 import { CarList } from '../../components/CarList/CarList';
 import { useCarStore } from '../../store/carStore';
 import css from './Catalog.module.css';
+import Loader from '../../components/Loader/Loader';
 
 export const Catalog = () => {
   const { filters, setFilters } = useCarStore();
@@ -27,7 +28,7 @@ export const Catalog = () => {
   });
 
   if (isLoadingBrands || isLoadingPrices) {
-    return <p>Loading filters...</p>;
+    return <Loader />;
   }
 
   if (isErrorBrands || isErrorPrices) {
