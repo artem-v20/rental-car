@@ -3,6 +3,7 @@ import { useCarsInfinite } from '../../hooks/useCarsInfinite';
 import css from './CarList.module.css';
 import { useMemo } from 'react';
 import type { Filters } from '../../types/car';
+import Loader from '../Loader/Loader';
 
 export const CarList = ({ filters }: { filters?: Filters }) => {
   const filtersKey = useMemo(() => JSON.stringify(filters), [filters]);
@@ -42,7 +43,7 @@ export const CarList = ({ filters }: { filters?: Filters }) => {
     return Array.from(new Map(filteredCars.map(car => [car.id, car])).values());
   }, [filteredCars]);
 
-  if (isLoading) return <p>Loading cars...</p>;
+  if (isLoading) return <Loader />;
   if (isError) return <p>Failed to load cars. Please try again later.</p>;
 
   return (

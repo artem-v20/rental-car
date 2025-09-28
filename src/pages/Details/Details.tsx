@@ -12,6 +12,7 @@ import {
   BsCheckCircle,
   BsFuelPump,
 } from 'react-icons/bs';
+import Loader from '../../components/Loader/Loader';
 
 export const Details = () => {
   const { id } = useParams<{ id: string }>();
@@ -26,7 +27,7 @@ export const Details = () => {
     enabled: !!id,
   });
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <Loader />;
   if (isError || !car) return <p>Car not found</p>;
 
   return (
