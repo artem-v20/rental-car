@@ -90,6 +90,7 @@ export const BookingForm = () => {
             dateFormat="dd.MM.yyyy"
             locale="en-GB"
             formatWeekDay={nameOfDay => nameOfDay.substr(0, 3).toUpperCase()}
+            required
             className={css.input}
           />
         </label>
